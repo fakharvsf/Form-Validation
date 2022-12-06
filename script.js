@@ -14,31 +14,29 @@ const myFormData = {};
 form.addEventListener('submit', alpha => {
   // const startDate = Number(document.getElementById('start-date').value);
   //Date Validation for start and end date
-  if (startDate.value > endDate.value) {
-    alert('⛔Warning the please enter a valid satrt and end date⛔');
+  // const
+  if (!/^[a-zA-Z_]*$/.test(fullName.value)) {
+    alert('invalid Name');
+  } else {
+    if (startDate.value > endDate.value) {
+      alert('⛔Warning the please enter a valid satrt and end date⛔');
+    } else {
+      //add data to the empaty object
+      // alpha.preventDefault();
+      myFormData.dateOfBirth = `${DoB.value}`;
+      myFormData.startDate = `${startDate.value}`;
+      myFormData.endDate = `${endDate.value}`;
+      myFormData.name = `${fullName.value}`;
+      myFormData.file = `${filess.value}`;
+
+      // console.log(myFormData);
+      let jsonFormat = JSON.stringify(myFormData);
+      console.log(jsonFormat);
+      // Saved to local storage
+      localStorage.setItem('', JSON.stringify(myFormData));
+      alert('🎉Your data is stored to the local storage🎉');
+    }
   }
-  //add data to the empaty object
-  alpha.preventDefault();
-  myFormData.dateOfBirth = `${DoB.value}`;
-  myFormData.startDate = `${startDate.value}`;
-  myFormData.endDate = `${endDate.value}`;
-  myFormData.name = `${fullName.value}`;
-  myFormData.file = `${filess.value}`;
-
-  // console.log(myFormData);
-  let jsonFormat = JSON.stringify(myFormData);
-  console.log(jsonFormat);
-  // Saved to local storage
-  localStorage.setItem('', jsonFormat);
-
-  if (
-    myFormData.dateOfBirth &&
-    myFormData.startDate &&
-    myFormData.endDate &&
-    myFormData.name &&
-    myFormData.filess
-  )
-    alert('🎉Your data is stored to the local storage🎉');
 });
 
 //downlaod file
